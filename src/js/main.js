@@ -114,7 +114,7 @@ Program.prototype.generateMatrix = function () {
 }
 
 var program = new Program(50, 50, 0, document.querySelector('.container'))
-program.compare2 = -1
+program.compare2 = 1
 program.play()
 
 
