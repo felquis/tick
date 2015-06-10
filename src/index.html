@@ -39,6 +39,30 @@
 	<body>
 		<div class="container"></div>
 
+		<div>
+			<div class="control-item">
+				<button data-action="play">Play</button> - <button data-action="pause">Pause</button>
+			</div>
+			<div class="control-item">
+				<label class="control-item-label" for="#control-compare1">Compare 1: </label>
+				<input class="control-item-input" type="number" id="control-compare1" min="0" value="0" max="1000" step="4" data-set="compare1">
+				<output for="control-compare1">50</output>
+			</div>
+			<div class="control-item">
+				<label class="control-item-label" for="#control-velocity">Compare 2: </label>
+				<input class="control-item-input" type="number" id="control-compare2" min="0" value="4" max="1000" step="4" data-set="compare2">
+				<output for="control-velocity">4</output>
+			</div>
+			<div class="control-item">
+				<label class="control-item-label" for="#control-velocity">Velocity: ms </label>
+				<input class="control-item-input" type="number" id="control-velocity" min="300" value="1000" max="1000" step="50" data-set="velocity">
+				<output for="control-velocity">50</output>
+			</div>
+		</div>
+
+		<canvas id="canvas"></canvas>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>
