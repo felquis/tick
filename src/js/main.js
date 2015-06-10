@@ -114,5 +114,28 @@ Program.prototype.generateMatrix = function () {
 }
 
 var program = new Program(50, 50, 0, document.querySelector('.container'))
+program.compare2 = -1
+program.play()
 
-program.renderNextTick()
+
+// Controles
+document.addEventListener('input', function (event) {
+	var output = document.querySelector('[for="' + event.target.id + '"]')
+
+	if (output) {
+		output.innerHTML = event.target.value
+	}
+
+	program[event.target.dataset.set] = parseInt(event.target.value)
+
+	console.log(program[event.target.dataset.set])
+})
+
+// Controles
+document.addEventListener('click', function (event) {
+	var fun = program[event.target.dataset.action]
+
+	if (typeof fun === 'function') {
+		program[event.target.dataset.action]()
+	}
+})

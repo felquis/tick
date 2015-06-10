@@ -39,6 +39,27 @@
 	<body>
 		<div class="container"></div>
 
+		<div>
+			<div class="control-item">
+				<button data-action="play">Play</button> - <button data-action="pause">Pause</button>
+			</div>
+			<div class="control-item">
+				<label class="control-item-label" for="#compare1">Compare 1: </label>
+				<input class="control-item-input" type="number" id="compare1" min="-1000" value="0" max="1000" step="1" data-set="compare1">
+				<output for="control-compare1">50</output>
+			</div>
+			<div class="control-item">
+				<label class="control-item-label" for="#velocity">Compare 2: </label>
+				<input class="control-item-input" type="number" id="compare2" min="-1000" value="1" max="1000" step="1" data-set="compare2">
+				<output for="control-velocity">4</output>
+			</div>
+			<div class="control-item">
+				<label class="control-item-label" for="#velocity">Velocity: ms </label>
+				<input class="control-item-input" type="number" id="velocity" min="300" value="1000" max="1000" step="50" data-set="velocity">
+				<output for="velocity">50</output>
+			</div>
+		</div>
+
 		<script src="js/main.js"></script>
 	</body>
 </html>
