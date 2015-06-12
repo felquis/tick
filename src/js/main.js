@@ -142,7 +142,6 @@ program.render()
 program.velocity = 500
 program.play()
 
-
 // Controles
 document.addEventListener('input', function (event) {
 	var output = document.querySelector('[for="' + event.target.id + '"]')
