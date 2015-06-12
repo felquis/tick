@@ -113,9 +113,9 @@ Program.prototype.generateMatrix = function () {
 	this.data = array
 }
 
-var program = new Program(50, 50, 0, document.querySelector('.container'))
+var program = new Program(86, 50, 0, document.querySelector('.container'))
 program.compare2 = 1
-program.play()
+program.renderNextTick()
 
 
 // Controles
