@@ -6,8 +6,9 @@ var Program = function (width, height, init, outputElement) {
 	this.velocity = 1000
 	this.timeouts = []
 	this.startWith = init
-	this.compare1 = 0
-	this.compare2 = 1
+	this.compare1 = 4
+	this.compare2 = 2
+	this.data = []
 
 	this.generateMatrix()
 }
@@ -17,20 +18,27 @@ Program.prototype.nextTick = function () {
 
 	this.generation += 1
 
-	var newArray = this.data
 	var self = this
+	var array = []
 	var y
 	var x
 	var yTotal = this.height
 	var xTotal = this.width
+	var total = self.height * self.width
+	var i = 0
+	var currentHeight = 0
 
-	this.data.forEach(function (row, y) {
-		for (x = 0; x < xTotal; x++) {
-			newArray[y][x + 1] = (newArray[y][x - self.compare1] === newArray[y][x - self.compare2])? 1 : 0
+	for (i; i < total; i++) {
+		if ((i % self.width) !== 0 && i !== 0) {
+			array[currentHeight].push((i % self.compare1) % self.compare1)
+		} else if ((i % self.width === 0)) {
+			currentHeight += 1
+			array[currentHeight] = []
+			array[currentHeight].push((i % self.compare1) % self.compare2)
 		}
-	})
+	};
 
-	this.data = newArray
+	this.data = array
 }
 
 Program.prototype.render = function () {
@@ -38,14 +46,21 @@ Program.prototype.render = function () {
 
 	var fragment = document.createDocumentFragment()
 
+	var self = this
+
 	this.data.forEach(function (yValue, yIndex) {
 		var line = document.createElement('div')
 		line.classList.add('row')
 
 		yValue.forEach(function (xValue, xIndex) {
+			var r = (yIndex + 1) * (xIndex + 1)
+			var g = r % self.compare1 % self.compare2 * r
+			var b = r % self.compare1 % self.compare2 * r
+
 			var span = document.createElement('span')
 			span.classList.add('row-item')
 			span.classList.add('row-item-' + xValue)
+			span.style.background = 'rgb('+r+', '+g+', '+b+')';
 			span.innerText = xValue
 			line.appendChild(span)
 		})
@@ -90,32 +105,42 @@ Program.prototype.renderNextTick = function () {
 
 Program.prototype.generateMatrix = function () {
 
-	var array = []
 	var self = this
+	var array = []
 	var y
 	var x
 	var yTotal = this.height
 	var xTotal = this.width
+	var total = self.height * self.width
+	var i = 0
+	var currentHeight = 0
 
-	for (y = 0; y < yTotal; y++) {
-		array[y] = []
+	for (i; i < total; i++) {
+		if ((i % self.width) !== 0 && i !== 0) {
+			array[currentHeight].push((i % self.compare1) % self.compare1)
 
-		for (x = 0; x < xTotal; x++) {
+			// console.log(currentHeight, i, array[currentHeight][i % self.width])
 
-			if (x === 0) {
-				array[y][x] = y % 2
-			} else {
-				array[y][x + 1] = (!!array[y][x] === !!array[y][x - 1])? 1 : 0
-			}
+			// console.log('Adiciona item', currentHeight, i, (i % 3) % 2)
+		} else if ((i % self.width === 0)) {
+			currentHeight += 1
+			array[currentHeight] = []
+			array[currentHeight].push((i % self.compare1) % self.compare2)
+
+			// console.log(i, array[currentHeight][i % self.width])
+			// console.log('Add row', currentHeight, i, )
 		}
 	};
 
 	this.data = array
 }
 
-var program = new Program(86, 50, 0, document.querySelector('.container'))
+var program = new Program(10, 10, 1, document.querySelector('.container'))
 program.compare2 = 1
-program.renderNextTick()
+program.render()
+
+program.velocity = 500
+program.play()
 
 
 // Controles
@@ -139,3 +164,4 @@ document.addEventListener('click', function (event) {
 		program[event.target.dataset.action]()
 	}
 })
+10

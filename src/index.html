@@ -22,7 +22,7 @@
 				position: absolute;
 				top: 0;
 				left: 0;
-				opacity: 0
+				opacity: 1
 			}
 
 			.container {
@@ -30,12 +30,14 @@
 			  justify-content: space-around;
 			  align-items: center;
 			  flex-direction: column;
+			  height: 90%
 			}
 
 			.row {
 			  display: flex;
 			  align-items: center;
 			  justify-content: space-around;
+			  width: 90%;
 			}
 
 			.row-item {
@@ -43,17 +45,49 @@
 			  overflow: hidden;
 			  display: block;
 			  width: 20px;
-			  height: 22px;
+			  height: 20px;
 			  text-indent: -99999em;
 			}
-
-			.row-item-0 {
-				background: yellow;
+/*
+			.row-item-0,
+			.row-item-8 {
+				background: #FF0101;
 			}
 
-			.row-item-1 {
-				background: red;
+			.row-item-1,
+			.row-item-9 {
+				background: #FF8E1D;
 			}
+
+			.row-item-2,
+			.row-item-10 {
+				background: #FFFF38;
+			}
+
+			.row-item-3,
+			.row-item-11 {
+				background: #01E301;
+			}
+
+			.row-item-4,
+			.row-item-12 {
+				background: #1C1DFF;
+			}
+
+			.row-item-5,
+			.row-item-13 {
+				background: #01008F;
+			}
+
+			.row-item-6,
+			.row-item-14 {
+				background: #C601C7;
+			}
+
+			.row-item-7,
+			.row-item-15 {
+				background: #FFF;
+			}*/
 		</style>
 	</head>
 	<body>
@@ -65,13 +99,13 @@
 			</div>
 			<div class="control-item">
 				<label class="control-item-label" for="#compare1">Compare 1: </label>
-				<input class="control-item-input" type="number" id="compare1" min="-1000" value="0" max="1000" step="1" data-set="compare1">
-				<output for="control-compare1">50</output>
+				<input class="control-item-input" type="number" id="compare1" min="-1000" value="8" max="1000" step="1" data-set="compare1">
+				<output for="control-compare1">8</output>
 			</div>
 			<div class="control-item">
 				<label class="control-item-label" for="#velocity">Compare 2: </label>
-				<input class="control-item-input" type="number" id="compare2" min="-1000" value="1" max="1000" step="1" data-set="compare2">
-				<output for="control-velocity">4</output>
+				<input class="control-item-input" type="number" id="compare2" min="-1000" value="7" max="1000" step="1" data-set="compare2">
+				<output for="control-velocity">7</output>
 			</div>
 			<div class="control-item">
 				<label class="control-item-label" for="#velocity">Velocity: ms </label>
